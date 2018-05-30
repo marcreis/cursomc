@@ -1,28 +1,25 @@
 package com.marcreis.cursomc.resources;
 
 import com.marcreis.cursomc.domain.Categoria;
+import com.marcreis.cursomc.services.CategoriaService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.ArrayList;
-import java.util.List;
-
 @RestController
 @RequestMapping(value = "/categorias")
 public class CategoriaResource {
+    @Autowired
+    private CategoriaService categoriaService;
 
-    @RequestMapping(method = RequestMethod.GET)
-    public List<Categoria> listar() {
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    public ResponseEntity<?> buscar(@PathVariable Long id) {
 
-        Categoria cat1 = new Categoria(1L, "Informatica");
-        Categoria cat2 = new Categoria(2L, "Escritorio");
-
-        List<Categoria> categoriaList = new ArrayList<>();
-
-        categoriaList.add(cat1);
-        categoriaList.add(cat2);
-        return categoriaList;
+        Categoria categoria = categoriaService.buscar(id);
+        return ResponseEntity.ok().body(categoria);
     }
 
 }
