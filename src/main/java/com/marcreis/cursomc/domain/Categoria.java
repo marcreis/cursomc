@@ -1,5 +1,7 @@
 package com.marcreis.cursomc.domain;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -11,7 +13,7 @@ public class Categoria implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nome;
-
+    @JsonBackReference
     @ManyToMany(mappedBy = "categorias")
     private List<Produto> produtos = new ArrayList<Produto>();
 
