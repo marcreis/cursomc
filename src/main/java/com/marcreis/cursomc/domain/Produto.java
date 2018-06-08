@@ -1,5 +1,6 @@
 package com.marcreis.cursomc.domain;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
@@ -27,7 +28,7 @@ public class Produto implements Serializable {
         this.preco = preco;
     }
 
-    @JsonManagedReference
+    @JsonBackReference
     @ManyToMany
     @JoinTable(name = "PRODUTO_CATEGORIA",
             joinColumns = @JoinColumn(name = "produto_id"),
