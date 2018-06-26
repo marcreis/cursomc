@@ -29,7 +29,7 @@ public enum TipoCliente  {
         this.descricao = descricao;
     }
 
-    public static TipoCliente toEnum(Integer id){
+    public static TipoCliente toEnum(Integer id) {
 
         if(id ==null){
             return null;
@@ -41,9 +41,8 @@ public enum TipoCliente  {
                 return x;
             }
 
-            throw new IllegalAccessException("Id invalido " + id);
         }
-
+        throw new IllegalArgumentException("Id invalido " + id);
     }
 
 }

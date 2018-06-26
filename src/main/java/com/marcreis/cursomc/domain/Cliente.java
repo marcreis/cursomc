@@ -5,7 +5,10 @@ import com.marcreis.cursomc.domain.enums.TipoCliente;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.HashSet;
+import java.util.Set;
 import java.util.Objects;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Cliente implements Serializable {
@@ -21,9 +24,11 @@ public class Cliente implements Serializable {
 
     private int tipo;
 
-    @OneToMany( mappedBy = 'cliente')
+    @OneToMany( mappedBy = "cliente")
     private List<Endereco> enderecos = new ArrayList<> ();
 
+    @ElementCollection
+    @CollectionTable(name = "TELEFONE")
     private Set<String> telefonesSet = new HashSet<>();
 
 
