@@ -33,6 +33,16 @@ public class Cliente implements Serializable {
     private Set<String> telefonesSet = new HashSet<>();
 
 
+    public List<Pedido> getPedidos() {
+        return pedidos;
+    }
+
+    public void setPedidos(List<Pedido> pedidos) {
+        this.pedidos = pedidos;
+    }
+
+    private List<Pedido> pedidos = new ArrayList<>();
+
     public Cliente() {
     }
 
