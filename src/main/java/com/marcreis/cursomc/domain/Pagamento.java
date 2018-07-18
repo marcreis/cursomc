@@ -7,30 +7,27 @@ import java.io.Serializable;
 import java.util.Objects;
 
 @Entity
+@Inheritance(strategy = InheritanceType.JOINED)
 public class Pagamento implements Serializable {
     @Id
     private Long id;
 
-    private EstadoPagamento estado;
+    private Integer estado;
 
     @OneToOne
     @JoinColumn(name = "pedido_id")
     @MapsId
     private Pedido pedido;
 
-    private Endereco enderecoEntrega;
 
-    private Cliente cliente;
 
     public Pagamento() {
     }
 
-    public Pagamento(Long id, EstadoPagamento estado, Pedido pedido, Endereco enderecoEntrega, Cliente cliente) {
+    public Pagamento(Long id, EstadoPagamento estado, Pedido pedido ) {
         this.id = id;
-        this.estado = estado;
+        this.estado = estado.getCod();
         this.pedido = pedido;
-        this.enderecoEntrega = enderecoEntrega;
-        this.cliente = cliente;
     }
 
     public Long getId() {
@@ -42,11 +39,11 @@ public class Pagamento implements Serializable {
     }
 
     public EstadoPagamento getEstado() {
-        return estado;
+        return EstadoPagamento.toEnum(this.estado);
     }
 
     public void setEstado(EstadoPagamento estado) {
-        this.estado = estado;
+        this.estado = estado.getCod();
     }
 
     public Pedido getPedido() {
@@ -57,21 +54,7 @@ public class Pagamento implements Serializable {
         this.pedido = pedido;
     }
 
-    public Endereco getEnderecoEntrega() {
-        return enderecoEntrega;
-    }
 
-    public void setEnderecoEntrega(Endereco enderecoEntrega) {
-        this.enderecoEntrega = enderecoEntrega;
-    }
-
-    public Cliente getCliente() {
-        return cliente;
-    }
-
-    public void setCliente(Cliente cliente) {
-        this.cliente = cliente;
-    }
 
     @Override
     public boolean equals(Object o) {
