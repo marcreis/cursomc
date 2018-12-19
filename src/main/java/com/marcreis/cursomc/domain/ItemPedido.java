@@ -1,7 +1,5 @@
 package com.marcreis.cursomc.domain;
 
-import com.marcreis.cursomc.ItemPedidoPK;
-
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 

@@ -1,7 +1,4 @@
-package com.marcreis.cursomc;
-
-import com.marcreis.cursomc.domain.Pedido;
-import com.marcreis.cursomc.domain.Produto;
+package com.marcreis.cursomc.domain;
 
 import javax.persistence.Embeddable;
 import javax.persistence.JoinColumn;
